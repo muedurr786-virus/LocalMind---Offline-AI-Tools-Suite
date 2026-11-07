@@ -72,13 +72,14 @@ Open [http://localhost:3000](http://localhost:3000) in your browser. Fully funct
     "@tailwindcss/vite": "^4.3.3",
     "@vitejs/plugin-react": "^6.1.1",
     "canvas-confetti": "^1.9.4",
-    "jszip": "^3.10.1",
+    "jszip": "^3.10.2",
     "lucide-react": "^0.546.0",
     "motion": "^12.23.24",
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "tailwindcss": "^4.3.3",
-    "vite": "^8.3.0"
+    "vite": "^8.3.0",
+    "vite-plugin-pwa": "^1.2.0"
   },
   "devDependencies": {
     "@types/canvas-confetti": "^1.9.0",

@@ -1,14 +1,20 @@
 import React from 'react';
-import { Download, Code2, Cpu, FileText, HeartHandshake, Eye, Database, Volume2 } from 'lucide-react';
+import { Download, Code2, Cpu, FileText, HeartHandshake, Eye, Database, Volume2, Smartphone } from 'lucide-react';
 import { ToolTab } from '../types';
 
 interface HeaderProps {
   activeTab: ToolTab;
   onTabChange: (tab: ToolTab) => void;
   onOpenCodeZip: () => void;
+  onOpenAppDownload: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange, onOpenCodeZip }) => {
+export const Header: React.FC<HeaderProps> = ({
+  activeTab,
+  onTabChange,
+  onOpenCodeZip,
+  onOpenAppDownload,
+}) => {
   const tabs: { id: ToolTab; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
     { id: 'neural', label: 'Neural Lab', icon: Cpu },
     { id: 'summarizer', label: 'Summarizer', icon: FileText },
@@ -59,21 +65,30 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange, onOpenCo
         })}
       </nav>
 
-      {/* Zone 3: Primary Action */}
+      {/* Zone 3: Primary Actions (Download App & Code ZIP) */}
       <div className="flex items-center gap-2 shrink-0">
         <button
-          onClick={onOpenCodeZip}
+          onClick={onOpenAppDownload}
           className="flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold text-neutral-950 bg-cyan-400 hover:bg-cyan-300 rounded-md transition-colors whitespace-nowrap shrink-0 shadow-sm shadow-cyan-950/50"
         >
-          <Download className="w-3.5 h-3.5" />
-          <span>Download Code (.zip)</span>
+          <Smartphone className="w-3.5 h-3.5" />
+          <span>Download App</span>
         </button>
+
+        <button
+          onClick={onOpenCodeZip}
+          className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-neutral-200 bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 rounded-md transition-colors whitespace-nowrap shrink-0"
+        >
+          <Download className="w-3.5 h-3.5 text-neutral-400" />
+          <span>Code (.zip)</span>
+        </button>
+
         <button
           onClick={() => onTabChange('code')}
           title="Browse Source Files"
-          className="hidden lg:flex items-center gap-1.5 px-2.5 py-1.5 text-xs text-neutral-300 hover:text-white bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 rounded-md transition-colors whitespace-nowrap shrink-0"
+          className="hidden lg:flex items-center gap-1.5 px-2.5 py-1.5 text-xs text-neutral-400 hover:text-white bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 rounded-md transition-colors whitespace-nowrap shrink-0"
         >
-          <Code2 className="w-3.5 h-3.5 text-neutral-400" />
+          <Code2 className="w-3.5 h-3.5" />
           <span>Files</span>
         </button>
       </div>
